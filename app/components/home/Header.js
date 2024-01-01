@@ -6,6 +6,7 @@ import {
   TextInput,
   Dimensions,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Color from "../../shared/Color";
@@ -28,9 +29,9 @@ const Header = () => {
       </View>
       <View style={styles.searchContainer}>
         <TextInput placeholder="Search" style={styles.searchInput} />
-        <Pressable>
+        <TouchableOpacity>
           <Ionicons name="search" size={25} style={styles.iconStyle} />
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     gap: 15,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20,
+    marginVertical: 20,
   },
   searchInput: {
     width: Dimensions.get("screen").width * 0.82,

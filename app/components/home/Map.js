@@ -5,7 +5,7 @@ import { UserLocationContext } from "../../context/UserLocationContext";
 import { Marker } from "react-native-maps";
 
 export default function Map() {
-  const [region, setRegion] = useState(null); // Change to null to match the expected coordinate format
+  const [region, setRegion] = useState(null);
   const { location, setLocation } = useContext(UserLocationContext);
 
   useEffect(() => {
@@ -20,15 +20,9 @@ export default function Map() {
   }, [location]);
 
   return (
-    <View style={{ marginTop: 20 }}>
-      <Text
-        style={{
-          fontWeight: 600,
-          fontSize: 15,
-          marginBottom: 10,
-        }}
-      >
-        Top Nearby Places
+    <View style={{}}>
+      <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: "600" }}>
+        Top Near By Places
       </Text>
       <View style={styles.mapContainer}>
         <MapView
