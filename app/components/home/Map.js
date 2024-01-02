@@ -9,18 +9,20 @@ export default function Map({ nearByPlaces }) {
   const { location, setLocation } = useContext(UserLocationContext);
 
   useEffect(() => {
-    if (location) {
+    if (location && location.coords) {
       setRegion({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
+        latitude: location.coords.latitude || 0,
+        longitude: location.coords.longitude || 0,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       });
+    } else {
+      console.error("Map: location or its coords are undefined", location);
     }
   }, [location]);
 
   return (
-    <View style={{}}>
+    <View>
       <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: "600" }}>
         Top Near By Places
       </Text>
@@ -33,21 +35,36 @@ export default function Map({ nearByPlaces }) {
         >
           {region && <Marker title="You" coordinate={region} />}
           {nearByPlaces &&
-            nearByPlaces.map(
-              (place, index) =>
-                index <= 5 && (
-                  <Marker
-                    key={index}
-                    title={place.name}
-                    coordinate={{
-                      latitude: place.geometry.location.lat,
-                      longitude: place.geometry.location.lng,
-                      latitudeDelta: 0.0922,
-                      longitudeDelta: 0.0421,
-                    }}
-                  />
-                )
-            )}
+            nearByPlaces.map((place, index) => {
+              if (
+                place &&
+                place.geometry &&
+                place.geometry.location &&
+                place.geometry.location.lat &&
+                place.geometry.location.lng
+              ) {
+                return (
+                  index <= 5 && (
+                    <Marker
+                      key={index}
+                      title={place.name}
+                      coordinate={{
+                        latitude: place.geometry.location.lat,
+                        longitude: place.geometry.location.lng,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                      }}
+                    />
+                  )
+                );
+              } else {
+                console.error(
+                  `Map: nearByPlaces[${index}] or its properties are undefined`,
+                  place
+                );
+                return null; // Skip rendering this marker
+              }
+            })}
         </MapView>
       </View>
     </View>

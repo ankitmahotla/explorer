@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTab from "./app/navigation/BottomTab";
 import { useState, useEffect } from "react";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, StatusBar } from "react-native";
 
 import * as Location from "expo-location";
 import { UserLocationContext } from "./app/context/UserLocationContext";

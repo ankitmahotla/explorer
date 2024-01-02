@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 import { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native";
-import PlaceDetailItem from "../components/PlaceDetailItem";
+import PlaceDetailItem from "../components/home/PlaceDetailItem";
 import Colors from "../shared/Color";
 import Map from "../components/home/Map";
 import { Linking, ScrollView, Platform, TouchableOpacity } from "react-native";
@@ -41,7 +41,7 @@ export default function Details() {
         place={place}
         onDirectionClick={() => onDirectionClick()}
       />
-      <Map placeList={[place]} />
+      <Map nearByPlaces={[place]} />
       <TouchableOpacity
         style={{
           backgroundColor: Colors.PRIMARY,

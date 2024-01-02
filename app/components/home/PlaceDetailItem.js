@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import Colors from "../shared/Color";
+import Colors from "../../shared/Color";
 import { Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
-import Share from "../services/Share";
+import Share from "../../services/Share";
 
 export default function PlaceDetailItem({ place, onDirectionClick }) {
   return (
