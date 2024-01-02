@@ -29,7 +29,7 @@ const BottomTab = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Favorite"
         component={Favorite}
         options={{
@@ -46,7 +46,7 @@ const BottomTab = () => {
             <Ionicons name="person" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
