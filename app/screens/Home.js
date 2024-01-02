@@ -10,7 +10,6 @@ import { UserLocationContext } from "../context/UserLocationContext";
 
 const Home = () => {
   const [nearByPlaces, setNearByPlaces] = useState([]);
-  const [category, setCategory] = useState("restaurant");
 
   const { location, setLocation } = useContext(UserLocationContext);
 
@@ -36,13 +35,13 @@ const Home = () => {
     } else {
       console.error("Location information is not available.");
     }
-  }, [location]); // Include location in the dependency array to re-run the effect when it changes
+  }, [location]);
 
   return (
     <SafeAreaView style={styles.container}>
       <Header />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Map />
+        <Map nearByPlaces={nearByPlaces} />
         <CategoryList setCategory={(value) => getNearByPlaces(value)} />
         {nearByPlaces.length > 0 && <Places places={nearByPlaces} />}
       </ScrollView>

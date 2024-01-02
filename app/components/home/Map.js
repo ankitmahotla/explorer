@@ -4,7 +4,7 @@ import { Dimensions, StyleSheet, View, Text } from "react-native";
 import { UserLocationContext } from "../../context/UserLocationContext";
 import { Marker } from "react-native-maps";
 
-export default function Map() {
+export default function Map({ nearByPlaces }) {
   const [region, setRegion] = useState(null);
   const { location, setLocation } = useContext(UserLocationContext);
 
@@ -32,6 +32,22 @@ export default function Map() {
           region={region}
         >
           {region && <Marker title="You" coordinate={region} />}
+          {nearByPlaces &&
+            nearByPlaces.map(
+              (place, index) =>
+                index <= 5 && (
+                  <Marker
+                    key={index}
+                    title={place.name}
+                    coordinate={{
+                      latitude: place.geometry.location.lat,
+                      longitude: place.geometry.location.lng,
+                      latitudeDelta: 0.0922,
+                      longitudeDelta: 0.0421,
+                    }}
+                  />
+                )
+            )}
         </MapView>
       </View>
     </View>

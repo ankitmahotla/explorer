@@ -4,6 +4,7 @@ import Search from "../screens/Search";
 import Favorite from "../screens/Favorite";
 import Profile from "../screens/Profile";
 import { Ionicons } from "@expo/vector-icons";
+import HomeStack from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +13,7 @@ const BottomTab = () => {
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" color={color} size={size} />
